@@ -636,20 +636,105 @@ select.fi {
 #toast.on { transform: translateY(0); opacity: 1; }
 #toast svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--em); }
 
-@media (max-width: 768px) {
-  .hero { grid-template-columns: 1fr; padding: 28px 20px 48px; }
-  .hero-card-wrap { display: none; }
-  .hero-h1 { font-size: 32px; }
-  .land-nav { padding: 16px 20px; }
-  .land-nav-links { display: none; }
-  .features { flex-wrap: wrap; gap: 18px; padding: 20px; }
-  .fg2, .emp-grid, .const-grid { grid-template-columns: 1fr; }
-  .results-wrap { padding: 24px 16px 60px; }
+/* ══ TABLET (max 1024px) ══ */
+@media (max-width: 1024px) {
+  .hero { gap: 32px; padding: 32px 32px 56px; }
+  .hero-h1 { font-size: 38px; }
+  .land-nav { padding: 18px 32px; }
+  .features { gap: 32px; padding: 20px 32px; }
+  .results-wrap { padding: 28px 24px 60px; }
   .insights-grid { grid-template-columns: 1fr 1fr; }
+  .lender-stats { gap: 16px; }
+  .score-band { padding: 24px 28px; }
+  .sb-score-num { font-size: 56px; }
+}
+
+/* ══ MOBILE (max 768px) ══ */
+@media (max-width: 768px) {
+  /* Landing */
+  .hero { grid-template-columns: 1fr; padding: 24px 16px 40px; gap: 24px; }
+  .hero-card-wrap { display: none; }
+  .hero-h1 { font-size: 32px; letter-spacing: -.3px; }
+  .hero-p { font-size: 14px; }
+  .land-nav { padding: 14px 16px; }
+  .land-nav-links { display: none; }
+  .btn-nav { padding: 8px 16px; font-size: 12px; }
+  .features { flex-wrap: wrap; gap: 16px; padding: 16px; justify-content: flex-start; }
+  .feat { width: calc(50% - 8px); }
+  .hero-stats { gap: 20px; }
+  .hero-stat-v { font-size: 20px; }
+  .hero-pills { gap: 6px; }
+  .trust-pill { font-size: 10px; padding: 4px 10px; }
+
+  /* Topbar */
+  .topbar { padding: 0 16px; }
+  .topbar-right { display: none; }
+
+  /* Progress bar */
+  .progress-wrap { padding: 12px 16px; overflow-x: auto; }
+  .progress-bar { min-width: 480px; }
+  .pb-info { display: none; }
+  .pb-circle { width: 24px; height: 24px; font-size: 10px; }
+
+  /* Form */
+  .form-content { padding: 16px; }
+  .form-card { border-radius: 16px; }
+  .card-head { padding: 20px 16px; }
+  .card-title { font-size: 18px; }
+  .card-body { padding: 20px 16px; }
+  .card-foot { padding: 14px 16px; flex-direction: column; gap: 10px; }
+  .card-foot .btn { width: 100%; justify-content: center; }
+  .fg2 { grid-template-columns: 1fr; }
+  .emp-grid { grid-template-columns: 1fr; }
+  .const-grid { grid-template-columns: 1fr 1fr; }
+
+  /* OTP */
+  .otp-digits { gap: 6px; }
+  .otp-d { width: 42px; height: 50px; font-size: 20px; border-radius: 8px; }
+  .otp-wrap { padding: 24px 16px; }
+
+  /* Loading */
+  .loading-wrap { padding: 32px 16px; }
+  .load-title { font-size: 18px; }
+
+  /* Results */
+  .results-wrap { padding: 16px 12px 60px; }
+  .score-band { flex-direction: column; padding: 20px 16px; gap: 20px; text-align: center; }
+  .sb-left { width: 100%; }
+  .sb-tags { justify-content: center; }
+  .sb-right { width: 100%; }
+  .sb-score-num { font-size: 64px; }
+  .sb-name { font-size: 20px; }
   .stats-strip { grid-template-columns: 1fr 1fr; }
-  .lender { grid-template-columns: auto 1fr; }
+  .stat-cell { padding: 14px 16px; }
+  .stat-v { font-size: 18px; }
+  .insights-grid { grid-template-columns: 1fr 1fr; }
+  .lender { grid-template-columns: auto 1fr; gap: 12px; padding: 14px 16px; }
   .lender-stats { display: none; }
+  .lender-name { font-size: 14px; }
+  .btn-apply { padding: 8px 12px; font-size: 12px; }
   .bottom-grid { grid-template-columns: 1fr; }
+  .section-head { flex-direction: column; gap: 2px; }
+}
+
+/* ══ SMALL MOBILE (max 480px) ══ */
+@media (max-width: 480px) {
+  .hero-h1 { font-size: 28px; }
+  .btn-cta { font-size: 14px; padding: 12px 20px; width: 100%; justify-content: center; }
+  .hero-cta { flex-direction: column; align-items: flex-start; width: 100%; }
+  .const-grid { grid-template-columns: 1fr; }
+  .otp-d { width: 36px; height: 44px; font-size: 18px; }
+  .insights-grid { grid-template-columns: 1fr; }
+  .stats-strip { grid-template-columns: 1fr 1fr; }
+  .score-band { padding: 16px 14px; }
+  .sb-score-num { font-size: 56px; }
+  .lender { grid-template-columns: 1fr; }
+  .lender-rank { display: none; }
+  .feat { width: 100%; }
+  .features { flex-direction: column; }
+  .hero-stats { gap: 16px; flex-wrap: wrap; }
+  .topbar-logo-name { font-size: 14px; }
+  .gst-row { max-width: 100%; }
 }
 </style>
 </head>
