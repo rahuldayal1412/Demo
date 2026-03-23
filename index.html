@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrowCapital — Business Loans up to ₹50 Lakhs</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* ═══════════════════════════════════════════════
+   GROWCAPITAL DESIGN SYSTEM
+   ─────────────────────────────────────────────
+   TYPOGRAPHY
+   Font Family : Inter (single font, all screens)
+   Weights     : 400 body · 500 medium · 600 semibold
+                 700 bold · 800 extrabold · 900 black
+   Scale       : 10 · 12 · 14 · 16 · 18 · 20 · 22
+                 24 · 26 · 32 · 46 · 72px
+
+   COLOURS
+   Primary     : #0A1628  Navy (brand dark)
+                 #00C896  Green (brand accent)
+   Secondary   : #132040  Navy 2
+                 #00A37A  Green dark
+   Tertiary    : #3D5475  Text secondary
+                 #8096B4  Text muted
+   Background  : #F4F6FB  App BG · #FFFFFF Card BG
+   Status      : #10B981 green · #F59E0B amber · #EF4444 red
+   Status BG   : #ECFDF5 · #FFFBEB · #FEF2F2
+
+   BORDER RADIUS
+   xs  : 4px   (checkboxes)
+   sm  : 8px   (badges, tags, small elements)
+   md  : 10px  (inputs, buttons, cards inner)
+   lg  : 16px  (panels, lender cards)
+   xl  : 20px  (main cards)
+   pill: 99px  (chips, pills)
+
+   ICONS
+   Style  : Stroke only (no filled icons)
+   Weight : 2–2.5px stroke
+   Cap    : round linecap + linejoin
+   Size   : 13px · 15px · 17px · 18px
+
+   SPACING
+   Base unit: 4px
+   Scale    : 4 · 8 · 12 · 16 · 20 · 24 · 32 · 48px
+
+   SHADOWS
+   Card  : 0 1px 4px rgba(10,22,40,.07)
+   Float : 0 8px 28px rgba(10,22,40,.25)
+   Brand : 0 6px 20px rgba(0,200,150,.4)
+═══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:   #0A1628;
+  --navy2:  #132040;
+  --em:     #00C896;
+  --em2:    #00A37A;
+  --bg:     #F4F6FB;
+  --white:  #FFFFFF;
+  --border: #E2E8F0;
+  --t1:     #0A1628;
+  --t2:     #3D5475;
+  --t3:     #8096B4;
+  --green:  #10B981;  --green-bg: #ECFDF5;
+  --amber:  #F59E0B;  --amber-bg: #FFFBEB;
+  --red:    #EF4444;  --red-bg:   #FEF2F2;
+  --font-h: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-b: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-m: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html, body {
+  font-family: var(--font-b);
+  background: var(--bg);
+  color: var(--t1);
+  line-height: 1.5;
+  font-size: 14px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ══ SCREEN SYSTEM ══ */
+.screen { display: none; }
+.screen.on { display: block; animation: fadeUp .3s ease; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+/* ══ LANDING ══ */
+#s0.on {
+  display: flex; flex-direction: column;
+  background: var(--navy); min-height: 100vh;
+  position: relative; overflow: hidden;
+}
+#s0::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse at 10% 50%, rgba(0,200,150,.12), transparent 50%),
+    radial-gradient(ellipse at 90% 20%, rgba(245,166,35,.08), transparent 45%);
+}
+#s0::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* NAV */
+.land-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 48px; position: relative; z-index: 10;
+}
+.logo-wrap { display: flex; align-items: center; gap: 9px; }
+.logo-mark {
+  width: 34px; height: 34px; border-radius: 9px;
+  background: linear-gradient(135deg, var(--em), var(--em2));
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 3px 12px rgba(0,200,150,.4);
+}
+.logo-mark svg { width: 18px; height: 18px; }
+.logo-name { font-family: var(--font-b); font-size: 20px; font-weight: 800; color: #fff; }
+.logo-name span { color: var(--em); }
+.land-nav-links { display: flex; gap: 28px; }
+.land-nav-links a {
+  font-size: 14px; color: rgba(255,255,255,.6); font-weight: 500;
+  cursor: pointer; text-decoration: none; transition: color .15s;
+}
+.land-nav-links a:hover { color: #fff; }
+.btn-nav {
+  background: var(--em); color: var(--navy);
+  padding: 9px 22px; border-radius: 8px;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  border: none; font-family: var(--font-b); transition: all .15s;
+}
+.btn-nav:hover { background: #00E6AD; box-shadow: 0 4px 16px rgba(0,200,150,.5); }
+
+/* HERO */
+.hero {
+  flex: 1; display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; gap: 48px;
+  padding: 40px 48px 64px; position: relative; z-index: 10;
+  max-width: 1200px; margin: 0 auto; width: 100%;
+}
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(0,200,150,.12); border: 1px solid rgba(0,200,150,.3);
+  color: var(--em); padding: 6px 14px; border-radius: 99px;
+  font-size: 12px; font-weight: 700; margin-bottom: 18px;
+}
+.hero-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--em); animation: blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.4} }
+.hero-h1 {
+  font-family: var(--font-b); font-size: 46px; font-weight: 800;
+  color: #fff; line-height: 1.15; letter-spacing: -.5px; margin-bottom: 16px;
+}
+.hero-h1 .em { color: var(--em); }
+.hero-p { font-size: 16px; color: rgba(255,255,255,.6); line-height: 1.65; margin-bottom: 28px; max-width: 460px; }
+.hero-pills { display: flex; gap: 9px; flex-wrap: wrap; margin-bottom: 32px; }
+.trust-pill {
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.8); padding: 6px 13px; border-radius: 99px;
+  font-size: 12px; font-weight: 600;
+}
+.trust-pill svg { width: 13px; height: 13px; color: var(--em); flex-shrink: 0; }
+.hero-cta { display: flex; align-items: center; gap: 14px; }
+.btn-cta {
+  display: flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, var(--em), var(--em2));
+  color: var(--navy); padding: 13px 26px; border-radius: 10px;
+  font-family: var(--font-b); font-size: 16px; font-weight: 700;
+  cursor: pointer; border: none; transition: all .2s;
+  box-shadow: 0 6px 20px rgba(0,200,150,.4);
+}
+.btn-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,200,150,.55); }
+.btn-cta svg { width: 17px; height: 17px; }
+.cta-note { font-size: 12px; color: rgba(255,255,255,.45); }
+.cta-note strong { color: rgba(255,255,255,.7); }
+.hero-stats { display: flex; gap: 32px; margin-top: 36px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.08); }
+.hero-stat-v { font-family: var(--font-b); font-size: 26px; font-weight: 800; color: #fff; }
+.hero-stat-l { font-size: 12px; color: rgba(255,255,255,.45); margin-top: 2px; }
+
+/* RIGHT CARD */
+.hero-card {
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+  backdrop-filter: blur(20px); border-radius: 20px;
+  padding: 26px; box-shadow: 0 20px 60px rgba(0,0,0,.3);
+}
+.hero-card-title { font-family: var(--font-b); font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 5px; }
+.hero-card-sub { font-size: 12px; color: rgba(255,255,255,.5); margin-bottom: 22px; }
+.hero-steps { display: flex; flex-direction: column; gap: 13px; }
+.hero-step { display: flex; align-items: flex-start; gap: 11px; }
+.step-num {
+  width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+  background: rgba(0,200,150,.15); border: 1.5px solid rgba(0,200,150,.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 800; color: var(--em);
+}
+.step-title { font-size: 14px; font-weight: 700; color: #fff; }
+.step-sub { font-size: 12px; color: rgba(255,255,255,.45); margin-top: 1px; }
+
+/* Social proof ticker */
+.sp-ticker {
+  display: flex; border: 1px solid rgba(255,255,255,.08);
+  border-radius: 10px; overflow: hidden; margin-top: 18px;
+}
+.sp-item {
+  flex: 1; display: flex; align-items: center; gap: 8px;
+  padding: 10px 14px; font-size: 12px; font-weight: 600;
+  color: rgba(255,255,255,.7);
+}
+.sp-item + .sp-item { border-left: 1px solid rgba(255,255,255,.08); }
+.sp-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; animation: blink 2s infinite; }
+.sp-sub { font-size: 10px; color: rgba(255,255,255,.35); margin-top: 1px; }
+
+/* FEATURES STRIP */
+.features {
+  background: rgba(0,0,0,.22); border-top: 1px solid rgba(255,255,255,.07);
+  padding: 22px 48px; display: flex; justify-content: center; gap: 56px;
+  position: relative; z-index: 10;
+}
+.feat { display: flex; align-items: center; gap: 10px; }
+.feat-icon {
+  width: 38px; height: 38px; border-radius: 8px;
+  background: rgba(0,200,150,.1); border: 1px solid rgba(0,200,150,.2);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.feat-icon svg { width: 17px; height: 17px; color: var(--em); }
+.feat-title { font-size: 14px; font-weight: 700; color: #fff; }
+.feat-sub { font-size: 12px; color: rgba(255,255,255,.4); }
+
+/* ══ FORM SCREENS ══ */
+.form-screen {
+  min-height: 100vh; background: var(--bg);
+  display: flex; flex-direction: column;
+}
+
+/* Topbar */
+.topbar {
+  background: var(--white); border-bottom: 1px solid var(--border);
+  padding: 0 32px; height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 50;
+  box-shadow: 0 1px 4px rgba(10,22,40,.07);
+}
+.topbar-logo { display: flex; align-items: center; gap: 8px; }
+.topbar-logo-mark {
+  width: 30px; height: 30px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--em), var(--em2));
+  display: flex; align-items: center; justify-content: center;
+}
+.topbar-logo-mark svg { width: 16px; height: 16px; }
+.topbar-logo-name { font-family: var(--font-b); font-size: 16px; font-weight: 800; color: var(--t1); }
+.topbar-logo-name span { color: var(--em2); }
+.topbar-right { font-size: 12px; color: var(--t3); }
+
+/* Progress */
+.progress-wrap { background: var(--white); border-bottom: 1px solid var(--border); padding: 14px 32px; }
+.progress-bar { display: flex; align-items: center; max-width: 600px; margin: 0 auto; }
+.pb-step { display: flex; align-items: center; flex: 1; }
+.pb-step:last-child .pb-line { display: none; }
+.pb-circle {
+  width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; transition: all .25s;
+  border: 2px solid var(--border); background: var(--white); color: var(--t3);
+}
+.pb-circle.done { background: var(--em); border-color: var(--em); color: #fff; }
+.pb-circle.done svg { width: 12px; height: 12px; }
+.pb-circle.active { background: var(--navy); border-color: var(--navy); color: #fff; }
+.pb-info { margin: 0 6px; }
+.pb-step-n { font-size: 10px; font-weight: 700; color: var(--t3); text-transform: uppercase; letter-spacing: .6px; }
+.pb-step-l { font-size: 12px; font-weight: 600; color: var(--t2); }
+.pb-step-n.a, .pb-step-l.a { color: var(--navy); }
+.pb-line { flex: 1; height: 2px; background: var(--border); margin: 0 3px; }
+.pb-line.done { background: var(--em); }
+
+/* Form content */
+.form-content { flex: 1; padding: 32px 20px; }
+.form-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 20px; box-shadow: 0 1px 4px rgba(10,22,40,.07);
+  max-width: 620px; margin: 0 auto; overflow: hidden;
+}
+.card-head {
+  background: linear-gradient(135deg, var(--navy), var(--navy2));
+  padding: 26px 30px; position: relative; overflow: hidden;
+}
+.card-head::after {
+  content: ''; position: absolute; bottom: -24px; right: -24px;
+  width: 100px; height: 100px; border-radius: 50%;
+  background: rgba(0,200,150,.07); pointer-events: none;
+}
+.card-step { font-size: 10px; font-weight: 700; color: rgba(0,200,150,.75); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 5px; }
+.card-title { font-family: var(--font-b); font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.card-sub { font-size: 12px; color: rgba(255,255,255,.5); }
+.card-body { padding: 26px 30px; }
+.card-foot {
+  padding: 18px 30px; border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  background: #FAFBFD;
+}
+
+/* Fields */
+.fg { display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
+.fg:last-child { margin-bottom: 0; }
+.fg2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.fl {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 12px; font-weight: 700; color: var(--t2);
+  text-transform: uppercase; letter-spacing: .5px;
+}
+.fl .req { color: var(--red); font-size: 14px; }
+.fl .hint { font-size: 10px; color: var(--t3); text-transform: none; letter-spacing: 0; font-weight: 500; }
+.fi {
+  padding: 10px 13px; border: 1.5px solid var(--border); border-radius: 10px;
+  font-size: 14px; font-family: var(--font-b); color: var(--t1);
+  background: var(--white); outline: none; transition: all .18s; width: 100%;
+}
+.fi:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(10,22,40,.07); }
+.fi.ok { border-color: var(--green); }
+.fi.err { border-color: var(--red); background: var(--red-bg); }
+.fi::placeholder { color: var(--t3); }
+select.fi {
+  appearance: none; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238096B4' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center; padding-right: 34px;
+}
+.ferr {
+  display: none; align-items: center; gap: 4px;
+  font-size: 12px; color: var(--red); font-weight: 600;
+}
+.ferr.on { display: flex; }
+.ferr svg { width: 11px; height: 11px; flex-shrink: 0; }
+.fhelp { font-size: 12px; color: var(--t3); }
+
+/* Phone */
+.phone-row { display: flex; gap: 8px; }
+.phone-code {
+  display: flex; align-items: center; gap: 5px; padding: 0 12px;
+  border: 1.5px solid var(--border); border-radius: 10px;
+  font-size: 14px; font-weight: 600; color: var(--t2);
+  background: var(--bg); white-space: nowrap;
+}
+
+/* Emp cards */
+.emp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.emp-card {
+  border: 2px solid var(--border); border-radius: 10px;
+  padding: 14px; cursor: pointer; transition: all .18s;
+  position: relative;
+}
+.emp-card:hover { border-color: var(--navy2); }
+.emp-card.selected { border-color: var(--navy); }
+.emp-card.selected::after {
+  content: '✓'; position: absolute; top: 8px; right: 10px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--em); color: #fff;
+  font-size: 10px; display: flex; align-items: center; justify-content: center;
+  font-weight: 800;
+}
+.emp-title { font-size: 14px; font-weight: 700; color: var(--t1); margin-bottom: 3px; }
+.emp-sub { font-size: 12px; color: var(--t3); line-height: 1.4; }
+
+/* Constitution */
+.const-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+.const-card {
+  display: flex; align-items: center; gap: 9px;
+  border: 2px solid var(--border); border-radius: 10px;
+  padding: 11px 13px; cursor: pointer; transition: all .15s;
+}
+.const-card:hover { border-color: var(--navy2); }
+.const-card.selected { border-color: var(--navy); }
+.const-radio {
+  width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0;
+  border: 2px solid var(--border); transition: all .15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.const-card.selected .const-radio { border-color: var(--navy); background: var(--navy); }
+.const-card.selected .const-radio::after { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #fff; }
+.const-label { font-size: 12px; font-weight: 600; color: var(--t1); }
+
+/* GST toggle */
+.gst-row { display: flex; gap: 9px; max-width: 200px; }
+.gst-opt {
+  flex: 1; text-align: center; padding: 9px;
+  border: 2px solid var(--border); border-radius: 10px;
+  cursor: pointer; font-size: 14px; font-weight: 600;
+  color: var(--t2); transition: all .15s;
+}
+.gst-opt:hover { border-color: var(--navy2); color: var(--t1); }
+.gst-opt.selected { border-color: var(--navy); background: var(--navy); color: #fff; }
+
+/* Pincode found */
+.pin-found {
+  display: none; align-items: center; gap: 6px;
+  background: var(--green-bg); border: 1px solid #A7F3D0;
+  border-radius: 8px; padding: 7px 11px;
+  font-size: 12px; color: var(--green); font-weight: 600; margin-top: 5px;
+}
+.pin-found.on { display: flex; }
+.pin-found svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+/* Checkbox */
+.consent-row { display: flex; align-items: flex-start; gap: 9px; cursor: pointer; }
+.chk-box {
+  width: 17px; height: 17px; border-radius: 4px;
+  border: 2px solid var(--border); flex-shrink: 0; margin-top: 1px;
+  background: var(--white); display: flex; align-items: center; justify-content: center;
+  transition: all .15s;
+}
+.chk-box.on { background: var(--navy); border-color: var(--navy); }
+.chk-box.on svg { display: block; }
+.chk-box svg { display: none; width: 10px; height: 10px; color: #fff; }
+.chk-text { font-size: 14px; color: var(--t2); line-height: 1.5; }
+.chk-text a { color: var(--navy); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 10px 20px; border-radius: 10px;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  border: none; font-family: var(--font-b); transition: all .18s;
+}
+.btn:active { transform: scale(.97); }
+.btn-primary { background: var(--navy); color: #fff; box-shadow: 0 2px 10px rgba(10,22,40,.2); }
+.btn-primary:hover { background: var(--navy2); }
+.btn-outline { background: var(--white); color: var(--t2); border: 1.5px solid var(--border); }
+.btn-outline:hover { border-color: var(--navy); color: var(--navy); }
+.btn svg { width: 15px; height: 15px; }
+
+/* OTP */
+.otp-wrap { text-align: center; padding: 36px 30px; }
+.otp-digits { display: flex; gap: 10px; justify-content: center; margin: 24px 0 14px; }
+.otp-d {
+  width: 50px; height: 58px; border: 2px solid var(--border); border-radius: 10px;
+  text-align: center; font-size: 22px; font-weight: 700;
+  font-family: var(--font-b); color: var(--t1);
+  outline: none; transition: all .15s; caret-color: var(--em);
+}
+.otp-d:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(10,22,40,.07); }
+.otp-d.filled { border-color: var(--em); background: var(--green-bg); color: var(--navy); }
+.otp-meta { font-size: 14px; color: var(--t3); margin-top: 4px; }
+.otp-demo {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--amber-bg); border: 1px solid #FDE68A;
+  padding: 7px 13px; border-radius: 8px;
+  font-size: 12px; color: #92400E; margin-top: 16px;
+}
+
+/* Loading */
+.loading-wrap {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 100vh; padding: 40px; text-align: center; background: var(--bg);
+}
+.loader {
+  width: 52px; height: 52px; border-radius: 50%;
+  border: 3px solid var(--border); border-top-color: var(--em);
+  animation: spin 1s linear infinite; margin-bottom: 24px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.load-title { font-family: var(--font-b); font-size: 22px; font-weight: 700; color: var(--t1); margin-bottom: 7px; }
+.load-sub { font-size: 14px; color: var(--t3); max-width: 300px; line-height: 1.6; margin-bottom: 32px; }
+.load-steps { display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 260px; }
+.load-step {
+  display: flex; align-items: center; gap: 11px;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 10px; padding: 11px 15px;
+  font-size: 14px; font-weight: 600; color: var(--t3);
+  opacity: .4; transition: all .4s;
+}
+.load-step.done { opacity: 1; color: var(--green); border-color: #A7F3D0; background: var(--green-bg); }
+.load-step svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+/* Results */
+.results-wrap { max-width: 1000px; margin: 0 auto; padding: 32px 40px 80px; }
+
+.score-band {
+  background: linear-gradient(135deg, var(--navy), var(--navy2));
+  border-radius: 20px; padding: 32px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 32px; margin-bottom: 20px; position: relative; overflow: hidden;
+}
+.score-band::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 80% 50%, rgba(0,200,150,.08), transparent 55%);
+}
+.sb-left { position: relative; }
+.sb-eyebrow { font-size: 10px; font-weight: 700; color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+.sb-name { font-family: var(--font-b); font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 3px; }
+.sb-meta { font-size: 12px; color: rgba(255,255,255,.38); margin-bottom: 18px; }
+.sb-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.sb-tag {
+  display: flex; align-items: center; gap: 5px;
+  border: 1px solid rgba(255,255,255,.12); border-radius: 99px;
+  padding: 4px 11px; font-size: 12px; color: rgba(255,255,255,.7); font-weight: 500;
+}
+.sb-tag.v { border-color: rgba(0,200,150,.35); background: rgba(0,200,150,.1); color: var(--em); }
+.sb-tag svg { width: 11px; height: 11px; }
+.sb-right { text-align: center; flex-shrink: 0; position: relative; }
+.sb-score-lbl { font-size: 10px; font-weight: 700; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.sb-score-num { font-family: var(--font-b); font-size: 72px; font-weight: 800; color: #fff; letter-spacing: -2px; line-height: 1; }
+.sb-score-grade {
+  display: inline-block; background: rgba(0,200,150,.15); border: 1px solid rgba(0,200,150,.3);
+  color: var(--em); padding: 4px 12px; border-radius: 99px;
+  font-size: 12px; font-weight: 700; margin-top: 6px;
+}
+.sb-scale { margin-top: 14px; }
+.sb-scale-bar {
+  height: 5px; border-radius: 99px;
+  background: linear-gradient(90deg, var(--red), var(--amber), var(--em));
+  position: relative; margin-bottom: 4px;
+}
+.sb-scale-dot {
+  position: absolute; width: 13px; height: 13px; border-radius: 50%;
+  background: #fff; border: 2.5px solid var(--em);
+  top: 50%; transform: translate(-50%, -50%); left: 69%;
+  box-shadow: 0 0 8px rgba(0,200,150,.5);
+}
+.sb-scale-labels { display: flex; justify-content: space-between; font-size: 10px; color: rgba(255,255,255,.3); font-family: var(--font-b); }
+
+/* Stats strip */
+.stats-strip {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 16px; overflow: hidden; margin-bottom: 20px;
+}
+.stat-cell { padding: 18px 22px; border-right: 1px solid var(--border); }
+.stat-cell:last-child { border-right: none; }
+.stat-v { font-family: var(--font-b); font-size: 22px; font-weight: 800; color: var(--t1); letter-spacing: -.2px; margin-bottom: 3px; }
+.stat-l { font-size: 12px; color: var(--t3); }
+
+/* Insights */
+.section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 13px; }
+.section-title { font-family: var(--font-b); font-size: 16px; font-weight: 700; color: var(--t1); }
+.section-meta { font-size: 12px; color: var(--t3); }
+.insights-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 20px; }
+.insight {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 16px; padding: 18px; transition: border-color .18s;
+}
+.insight:hover { border-color: var(--navy); }
+.ins-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 11px;
+}
+.ins-icon svg { width: 15px; height: 15px; }
+.ins-lbl { font-size: 10px; font-weight: 700; color: var(--t3); text-transform: uppercase; letter-spacing: .7px; margin-bottom: 4px; }
+.ins-val { font-family: var(--font-b); font-size: 20px; font-weight: 800; color: var(--t1); letter-spacing: -.2px; margin-bottom: 3px; }
+.ins-impact { font-size: 12px; font-weight: 600; margin-bottom: 9px; }
+.ins-bar { height: 3px; background: var(--border); border-radius: 99px; overflow: hidden; }
+.ins-fill { height: 100%; border-radius: 99px; }
+
+/* Lenders */
+.lenders-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.lender {
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: 16px; padding: 18px 24px;
+  display: grid; grid-template-columns: auto 1fr auto auto;
+  align-items: center; gap: 20px;
+  cursor: pointer; transition: all .18s;
+}
+.lender:hover { border-color: var(--navy); box-shadow: 0 4px 16px rgba(10,22,40,.08); }
+.lender.top { border-color: var(--em); }
+.lender-rank {
+  width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+  border: 1.5px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; color: var(--t3);
+}
+.lender.top .lender-rank { border-color: var(--em); background: var(--em); color: var(--navy); }
+.lender-name { font-size: 14px; font-weight: 700; color: var(--t1); margin-bottom: 4px; }
+.lender-badges { display: flex; gap: 6px; }
+.lbadge {
+  font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 99px;
+}
+.lb-best { background: var(--green-bg); color: var(--green); border: 1px solid #A7F3D0; }
+.lb-good { background: var(--amber-bg); color: var(--amber); border: 1px solid #FDE68A; }
+.lender-stats { display: flex; gap: 24px; }
+.ls-item {}
+.ls-lbl { font-size: 10px; font-weight: 700; color: var(--t3); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
+.ls-val { font-size: 14px; font-weight: 700; color: var(--t1); font-family: var(--font-b); }
+.btn-apply {
+  padding: 9px 18px; border-radius: 9px;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  font-family: var(--font-b); transition: all .15s;
+}
+.ba-p { background: var(--navy); color: #fff; border: none; }
+.ba-p:hover { background: var(--navy2); }
+.ba-o { background: var(--white); color: var(--t2); border: 1.5px solid var(--border); }
+.ba-o:hover { border-color: var(--navy); color: var(--navy); }
+
+/* Bottom grid */
+.bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.b-panel { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 22px; }
+.b-title { font-family: var(--font-b); font-size: 14px; font-weight: 700; color: var(--t1); margin-bottom: 14px; }
+.next-steps { display: flex; flex-direction: column; gap: 11px; }
+.ns-item { display: flex; align-items: flex-start; gap: 11px; }
+.ns-n {
+  width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+  border: 1.5px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; color: var(--t3);
+}
+.ns-t { font-size: 14px; font-weight: 600; color: var(--t1); }
+.ns-s { font-size: 12px; color: var(--t3); margin-top: 1px; }
+.help-panel {
+  background: linear-gradient(135deg, var(--navy), var(--navy2));
+  border-radius: 16px; padding: 26px;
+}
+.hp-t { font-family: var(--font-b); font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+.hp-s { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.6; margin-bottom: 18px; }
+.btn-help {
+  display: flex; align-items: center; gap: 7px;
+  background: rgba(255,255,255,.1); color: rgba(255,255,255,.8);
+  border: 1px solid rgba(255,255,255,.15); padding: 10px 17px;
+  border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer;
+  font-family: var(--font-b); transition: all .15s; width: fit-content;
+}
+.btn-help:hover { background: rgba(255,255,255,.18); }
+.btn-help svg { width: 14px; height: 14px; }
+
+/* Toast */
+#toast {
+  position: fixed; bottom: 20px; right: 20px;
+  background: var(--navy); color: #fff;
+  padding: 11px 17px; border-radius: 12px;
+  font-size: 14px; font-weight: 600;
+  box-shadow: 0 8px 28px rgba(10,22,40,.25);
+  z-index: 9999; display: flex; align-items: center; gap: 8px;
+  transform: translateY(16px); opacity: 0;
+  transition: all .28s cubic-bezier(.34,1.56,.64,1);
+}
+#toast.on { transform: translateY(0); opacity: 1; }
+#toast svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--em); }
+
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; padding: 28px 20px 48px; }
+  .hero-card-wrap { display: none; }
+  .hero-h1 { font-size: 32px; }
+  .land-nav { padding: 16px 20px; }
+  .land-nav-links { display: none; }
+  .features { flex-wrap: wrap; gap: 18px; padding: 20px; }
+  .fg2, .emp-grid, .const-grid { grid-template-columns: 1fr; }
+  .results-wrap { padding: 24px 16px 60px; }
+  .insights-grid { grid-template-columns: 1fr 1fr; }
+  .stats-strip { grid-template-columns: 1fr 1fr; }
+  .lender { grid-template-columns: auto 1fr; }
+  .lender-stats { display: none; }
+  .bottom-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════ SCREEN 0 — LANDING ═══════════════════════ -->
+<div class="screen on" id="s0">
+  <nav class="land-nav">
+    <div class="logo-wrap">
+      <div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+      <span class="logo-name">Grow<span>Capital</span></span>
+    </div>
+    <div class="land-nav-links">
+      <a>Business Loans</a><a>Personal Loans</a><a>About</a>
+    </div>
+    <button class="btn-nav" onclick="show('s1')">Apply Now</button>
+  </nav>
+
+  <div class="hero">
+    <div>
+      <div class="hero-pill"><div class="hero-pill-dot"></div>₹500 Cr+ disbursed to 10,000+ businesses</div>
+      <h1 class="hero-h1">Fuel Your Business<br>Growth with Loans<br>up to <span class="em">₹50 Lakhs</span></h1>
+      <p class="hero-p">Apply online in 5 minutes. Get matched with 20+ lending partners. Receive funds in 2–4 business days.</p>
+      <div class="hero-pills">
+        <div class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Bank-grade Security</div>
+        <div class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>No Hidden Charges</div>
+        <div class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Decision in 48 hrs</div>
+      </div>
+      <div class="hero-cta">
+        <button class="btn-cta" onclick="show('s1')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          Apply for Business Loan
+        </button>
+        <div class="cta-note"><strong>Free</strong> credit check · No commitment</div>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hero-stat-v">₹50L</div><div class="hero-stat-l">Max Loan Amount</div></div>
+        <div><div class="hero-stat-v">9.5%</div><div class="hero-stat-l">Interest Rate p.a.</div></div>
+        <div><div class="hero-stat-v">48hrs</div><div class="hero-stat-l">Avg. Approval</div></div>
+        <div><div class="hero-stat-v">20+</div><div class="hero-stat-l">Lending Partners</div></div>
+      </div>
+    </div>
+
+    <div class="hero-card-wrap">
+      <div class="hero-card">
+        <div class="hero-card-title">How it works</div>
+        <div class="hero-card-sub">Simple 4-step process to get funded</div>
+        <div class="hero-steps">
+          <div class="hero-step"><div class="step-num">1</div><div><div class="step-title">Tell us about yourself</div><div class="step-sub">Basic personal & business details</div></div></div>
+          <div class="hero-step"><div class="step-num">2</div><div><div class="step-title">Verify your identity</div><div class="step-sub">Quick OTP verification</div></div></div>
+          <div class="hero-step"><div class="step-num">3</div><div><div class="step-title">Get your credit score</div><div class="step-sub">We fetch your credit report instantly</div></div></div>
+          <div class="hero-step"><div class="step-num">4</div><div><div class="step-title">Choose your lender</div><div class="step-sub">Pick from curated loan offers</div></div></div>
+        </div>
+        <button class="btn-cta" style="margin-top:18px;width:100%;justify-content:center" onclick="show('s1')">
+          Get Started — It's Free
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div class="sp-ticker" style="margin-top:16px">
+          <div class="sp-item">
+            <div class="sp-dot" style="background:#00C896"></div>
+            <div><div>Just approved ₹12L</div><div class="sp-sub">2 mins ago · Mumbai</div></div>
+          </div>
+          <div class="sp-item">
+            <div class="sp-dot" style="background:#F59E0B"></div>
+            <div><div>48 applied today</div><div class="sp-sub">Live · across India</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><div class="feat-title">Best Interest Rates</div><div class="feat-sub">Starting at 9.5% p.a.</div></div></div>
+    <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div><div class="feat-title">Quick Disbursals</div><div class="feat-sub">Funds in 2–4 business days</div></div></div>
+    <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div><div class="feat-title">Multiple Lending Partners</div><div class="feat-sub">20+ banks & NBFCs</div></div></div>
+    <div class="feat"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="feat-title">Secure & Trusted</div><div class="feat-sub">256-bit SSL encrypted</div></div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ SCREEN 1 — PERSONAL ═══════════════════════ -->
+<div class="screen" id="s1">
+  <div class="form-screen">
+    <div class="topbar">
+      <div class="topbar-logo">
+        <div class="topbar-logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <span class="topbar-logo-name">Grow<span>Capital</span></span>
+      </div>
+      <div class="topbar-right" id="topbar-user" style="display:none"></div>
+    </div>
+    <div class="progress-wrap"><div class="progress-bar" id="pb1"></div></div>
+    <div class="form-content">
+      <div class="form-card">
+        <div class="card-head">
+          <div class="card-step">Step 1 of 3</div>
+          <div class="card-title">Personal Information</div>
+          <div class="card-sub">Required for your credit report and loan eligibility</div>
+        </div>
+        <div class="card-body">
+          <div class="fg2">
+            <div class="fg">
+              <label class="fl">First Name <span class="req">*</span></label>
+              <input class="fi" id="fName" type="text" placeholder="e.g. Rahul" autocomplete="given-name">
+              <div class="ferr" id="fe-fName"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Required</div>
+            </div>
+            <div class="fg">
+              <label class="fl">Last Name <span class="req">*</span></label>
+              <input class="fi" id="lName" type="text" placeholder="e.g. Dayal" autocomplete="family-name">
+              <div class="ferr" id="fe-lName"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Required</div>
+            </div>
+          </div>
+          <div class="fg">
+            <label class="fl">Date of Birth <span class="req">*</span> <span class="hint">As per PAN card</span></label>
+            <input class="fi" id="dob" type="date" style="max-width:220px" id="dob">
+            <div class="ferr" id="fe-dob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span id="dob-msg">Must be 18+ years old</span></div>
+          </div>
+          <div class="fg">
+            <label class="fl">Phone Number <span class="req">*</span></label>
+            <div class="phone-row">
+              <div class="phone-code"><span>🇮🇳</span> +91</div>
+              <input class="fi" id="phone" type="tel" placeholder="9876543210" maxlength="10" autocomplete="tel">
+            </div>
+            <div class="ferr" id="fe-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Valid 10-digit number required</div>
+          </div>
+          <div class="fg">
+            <label class="fl">Email Address <span class="req">*</span></label>
+            <input class="fi" id="email" type="email" placeholder="you@company.com" autocomplete="email">
+            <div class="ferr" id="fe-email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Valid email required</div>
+          </div>
+          <div class="fg">
+            <label class="fl">PAN Card Number <span class="req">*</span></label>
+            <input class="fi" id="pan" type="text" placeholder="ABCDE1234F" maxlength="10" style="text-transform:uppercase;font-family:var(--font-m);letter-spacing:2px;max-width:200px">
+            <div class="ferr" id="fe-pan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Format: 5 letters, 4 digits, 1 letter</div>
+            <div class="fhelp">Required for credit report. Must be exactly 10 characters.</div>
+          </div>
+          <div class="fg">
+            <label class="fl">Employment Type <span class="req">*</span></label>
+            <div class="emp-grid" style="margin-top:6px">
+              <div class="emp-card" id="emp-business" onclick="selEmp('business')">
+                <div class="emp-title">Self-employed Business</div>
+                <div class="emp-sub">Run a business — shop, factory, trading, etc.</div>
+              </div>
+              <div class="emp-card" id="emp-professional" onclick="selEmp('professional')">
+                <div class="emp-title">Self-employed Professional</div>
+                <div class="emp-sub">Doctor, CA, Lawyer, Architect, etc.</div>
+              </div>
+            </div>
+            <div class="ferr" id="fe-emp" style="margin-top:8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Please select your employment type</div>
+          </div>
+        </div>
+        <div class="card-foot">
+          <button class="btn btn-outline" onclick="show('s0')">← Back</button>
+          <button class="btn btn-primary" onclick="doStep1()">Continue to Business Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ SCREEN 2 — BUSINESS ═══════════════════════ -->
+<div class="screen" id="s2">
+  <div class="form-screen">
+    <div class="topbar">
+      <div class="topbar-logo">
+        <div class="topbar-logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <span class="topbar-logo-name">Grow<span>Capital</span></span>
+      </div>
+    </div>
+    <div class="progress-wrap"><div class="progress-bar" id="pb2"></div></div>
+    <div class="form-content">
+      <div class="form-card">
+        <div class="card-head">
+          <div class="card-step">Step 2 of 3</div>
+          <div class="card-title">Business Information</div>
+          <div class="card-sub">Helps us determine your loan eligibility</div>
+        </div>
+        <div class="card-body">
+          <div class="fg">
+            <label class="fl">Business Constitution <span class="req">*</span></label>
+            <div class="const-grid" style="margin-top:6px">
+              <div class="const-card" id="bc-prop" onclick="selConst('prop')"><div class="const-radio" id="cr-prop"></div><div class="const-label">Proprietorship</div></div>
+              <div class="const-card" id="bc-part" onclick="selConst('part')"><div class="const-radio" id="cr-part"></div><div class="const-label">Partnership Firm</div></div>
+              <div class="const-card" id="bc-pvt"  onclick="selConst('pvt')"><div class="const-radio" id="cr-pvt"></div><div class="const-label">Private Limited</div></div>
+              <div class="const-card" id="bc-pub"  onclick="selConst('pub')"><div class="const-radio" id="cr-pub"></div><div class="const-label">Public Limited</div></div>
+            </div>
+            <div class="ferr" id="fe-const" style="margin-top:8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Please select one</div>
+          </div>
+          <div class="fg2" style="margin-top:16px">
+            <div class="fg">
+              <label class="fl">Business Pincode <span class="req">*</span></label>
+              <input class="fi" id="pincode" type="text" placeholder="400001" maxlength="6">
+              <div class="pin-found" id="pin-found"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg><span id="pin-city">Mumbai, Maharashtra</span></div>
+              <div class="ferr" id="fe-pincode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Valid 6-digit pincode required</div>
+            </div>
+            <div class="fg">
+              <label class="fl">Business Age <span class="req">*</span></label>
+              <select class="fi" id="bizAge">
+                <option value="">Select…</option>
+                <option>Less than 1 year</option><option>1–3 years</option>
+                <option>3–5 years</option><option>5–10 years</option>
+                <option>10–15 years</option><option>More than 15 years</option>
+              </select>
+              <div class="ferr" id="fe-bizAge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Required</div>
+            </div>
+            <div class="fg">
+              <label class="fl">Annual Turnover <span class="req">*</span></label>
+              <select class="fi" id="turnover">
+                <option value="">Select…</option>
+                <option>Less than ₹10 Lakhs</option><option>₹10–25 Lakhs</option>
+                <option>₹25–50 Lakhs</option><option>₹50L–1 Crore</option>
+                <option>₹1–5 Crores</option><option>More than ₹5 Crores</option>
+              </select>
+              <div class="ferr" id="fe-turnover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Required</div>
+            </div>
+            <div class="fg">
+              <label class="fl">Industry</label>
+              <select class="fi" id="industry">
+                <option value="">Select…</option>
+                <option>Food & Beverages</option><option>Retail & Trading</option>
+                <option>Manufacturing</option><option>Healthcare</option>
+                <option>Technology</option><option>Education</option>
+                <option>Real Estate</option><option>Professional Services</option><option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg" style="margin-top:4px">
+            <label class="fl">GST Registered?</label>
+            <div class="gst-row" style="margin-top:6px">
+              <div class="gst-opt" id="gst-yes" onclick="setGST(true)">Yes</div>
+              <div class="gst-opt" id="gst-no"  onclick="setGST(false)">No</div>
+            </div>
+          </div>
+          <div class="fg" id="gstin-wrap" style="display:none">
+            <label class="fl">GSTIN Number</label>
+            <input class="fi" id="gstin" type="text" placeholder="06AABCU9603R1ZR" maxlength="15" style="font-family:var(--font-m);text-transform:uppercase;letter-spacing:1px">
+            <div class="fhelp">Having GSTIN improves approval chances with most lenders.</div>
+          </div>
+          <div class="fg" style="margin-top:8px">
+            <div class="consent-row" onclick="togConsent()">
+              <div class="chk-box" id="tc-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="chk-text">I authorise GrowCapital to fetch my credit report and agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></div>
+            </div>
+            <div class="ferr" id="fe-tc" style="margin-top:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Please accept to continue</div>
+          </div>
+        </div>
+        <div class="card-foot">
+          <button class="btn btn-outline" onclick="show('s1')">← Back</button>
+          <button class="btn btn-primary" onclick="doStep2()">Verify & Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ SCREEN 3 — OTP ═══════════════════════ -->
+<div class="screen" id="s3">
+  <div class="form-screen">
+    <div class="topbar">
+      <div class="topbar-logo">
+        <div class="topbar-logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <span class="topbar-logo-name">Grow<span>Capital</span></span>
+      </div>
+    </div>
+    <div class="progress-wrap"><div class="progress-bar" id="pb3"></div></div>
+    <div class="form-content">
+      <div class="form-card" style="max-width:460px">
+        <div class="card-head">
+          <div class="card-step">Step 3 of 3</div>
+          <div class="card-title">Verify Your Number</div>
+          <div class="card-sub">OTP sent to +91 <span id="otp-phone" style="color:rgba(255,255,255,.85);font-weight:600">XXXXXXXXXX</span></div>
+        </div>
+        <div class="otp-wrap">
+          <div style="font-size:14px;color:var(--t3)">Enter 6-digit OTP</div>
+          <div class="otp-digits">
+            <input class="otp-d" maxlength="1" type="tel" id="o0">
+            <input class="otp-d" maxlength="1" type="tel" id="o1">
+            <input class="otp-d" maxlength="1" type="tel" id="o2">
+            <input class="otp-d" maxlength="1" type="tel" id="o3">
+            <input class="otp-d" maxlength="1" type="tel" id="o4">
+            <input class="otp-d" maxlength="1" type="tel" id="o5">
+          </div>
+          <div class="ferr" id="fe-otp" style="justify-content:center;margin-bottom:10px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span id="otp-err">Incorrect OTP</span></div>
+          <div class="otp-meta">Didn't receive it? <span id="otp-resend">Resend in <span id="otp-timer">30</span>s</span></div>
+          <div style="font-size:12px;color:var(--t3);margin-top:6px">Wrong number? <span style="color:var(--navy);font-weight:600;cursor:pointer" onclick="show('s1')">Change</span></div>
+          <div class="otp-demo">💡 Demo: enter any 6 digits (try <strong>123456</strong>)</div>
+        </div>
+        <div class="card-foot" style="justify-content:flex-end">
+          <button class="btn btn-primary" style="font-size:16px;padding:12px 26px" onclick="doOTP()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Verify & Fetch Credit Score
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ SCREEN 4 — LOADING ═══════════════════════ -->
+<div class="screen" id="s4">
+  <div class="loading-wrap">
+    <div class="loader"></div>
+    <div class="load-title">Fetching Your Credit Report…</div>
+    <div class="load-sub">This takes about 10 seconds. Please keep this window open.</div>
+    <div class="load-steps">
+      <div class="load-step" id="ls0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Verifying identity…</div>
+      <div class="load-step" id="ls1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Connecting to bureau…</div>
+      <div class="load-step" id="ls2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Fetching credit report…</div>
+      <div class="load-step" id="ls3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Matching lenders…</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ SCREEN 5 — RESULTS ═══════════════════════ -->
+<div class="screen" id="s5">
+  <div class="topbar">
+    <div class="topbar-logo">
+      <div class="topbar-logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+      <span class="topbar-logo-name">Grow<span>Capital</span></span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--t2)">
+      <span id="res-username" style="font-weight:600;color:var(--t1)"></span>
+    </div>
+  </div>
+  <div class="results-wrap">
+    <div class="score-band">
+      <div class="sb-left">
+        <div class="sb-eyebrow">Credit Report · Live</div>
+        <div class="sb-name" id="res-name">Rahul Dayal</div>
+        <div class="sb-meta">Updated today · Next refresh in 28 days</div>
+        <div class="sb-tags">
+          <div class="sb-tag v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Verified</div>
+          <div class="sb-tag">PAN: ABCDE1234F</div>
+          <div class="sb-tag">Proprietorship</div>
+          <div class="sb-tag">₹40–50L Turnover</div>
+        </div>
+      </div>
+      <div class="sb-right">
+        <div class="sb-score-lbl">Credit Score</div>
+        <div class="sb-score-num">742</div>
+        <div class="sb-score-grade">Good ↑</div>
+        <div class="sb-scale">
+          <div class="sb-scale-bar"><div class="sb-scale-dot"></div></div>
+          <div class="sb-scale-labels"><span>300</span><span>850</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-strip">
+      <div class="stat-cell"><div class="stat-v">₹50L</div><div class="stat-l">Max Eligible Loan</div></div>
+      <div class="stat-cell"><div class="stat-v">9.5%</div><div class="stat-l">Best Rate p.a.</div></div>
+      <div class="stat-cell"><div class="stat-v">20+</div><div class="stat-l">Lenders Matched</div></div>
+      <div class="stat-cell"><div class="stat-v">48h</div><div class="stat-l">Est. Decision Time</div></div>
+    </div>
+
+    <div class="section-head"><div class="section-title">Credit Report Insights</div><div class="section-meta">6 factors · bureau data</div></div>
+    <div class="insights-grid">
+      <div class="insight"><div class="ins-icon" style="background:#EFF6FF"><svg viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div><div class="ins-lbl">Payment History</div><div class="ins-val">100%</div><div class="ins-impact" style="color:var(--green)">↑ High Impact</div><div class="ins-bar"><div class="ins-fill" style="width:100%;background:#3B82F6"></div></div></div>
+      <div class="insight"><div class="ins-icon" style="background:var(--amber-bg)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><div class="ins-lbl">Credit Utilization</div><div class="ins-val">28%</div><div class="ins-impact" style="color:var(--green)">↑ High Impact</div><div class="ins-bar"><div class="ins-fill" style="width:28%;background:var(--amber)"></div></div></div>
+      <div class="insight"><div class="ins-icon" style="background:var(--green-bg)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="ins-lbl">Credit Age</div><div class="ins-val">6.2 yrs</div><div class="ins-impact" style="color:var(--amber)">→ Low Impact</div><div class="ins-bar"><div class="ins-fill" style="width:62%;background:var(--green)"></div></div></div>
+      <div class="insight"><div class="ins-icon" style="background:#F5F3FF"><svg viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="ins-lbl">Total Accounts</div><div class="ins-val">8</div><div class="ins-impact" style="color:var(--green)">↑ High Impact</div><div class="ins-bar"><div class="ins-fill" style="width:70%;background:#7C3AED"></div></div></div>
+      <div class="insight"><div class="ins-icon" style="background:var(--red-bg)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div class="ins-lbl">Credit Enquiries</div><div class="ins-val">2</div><div class="ins-impact" style="color:var(--amber)">→ Medium Impact</div><div class="ins-bar"><div class="ins-fill" style="width:20%;background:var(--red)"></div></div></div>
+      <div class="insight"><div class="ins-icon" style="background:var(--green-bg)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div class="ins-lbl">Credit Mix</div><div class="ins-val">Diverse</div><div class="ins-impact" style="color:var(--green)">↑ High Impact</div><div class="ins-bar"><div class="ins-fill" style="width:80%;background:var(--em)"></div></div></div>
+    </div>
+
+    <div class="section-head"><div class="section-title">Curated Loan Offers For You</div><div class="section-meta">3 of 20+ lenders · best rate first</div></div>
+    <div class="lenders-list">
+      <div class="lender top">
+        <div class="lender-rank">1</div>
+        <div><div class="lender-name">LendingKart</div><div class="lender-badges"><span class="lbadge lb-best">⭐ Best Match</span><span class="lbadge lb-good">Excellent Approval</span></div></div>
+        <div class="lender-stats">
+          <div class="ls-item"><div class="ls-lbl">Rate</div><div class="ls-val">1.02%/mo</div></div>
+          <div class="ls-item"><div class="ls-lbl">Fee</div><div class="ls-val">Upto 2%</div></div>
+          <div class="ls-item"><div class="ls-lbl">EMI ₹10L 5yr</div><div class="ls-val">₹20,560</div></div>
+          <div class="ls-item"><div class="ls-lbl">Prepayment</div><div class="ls-val">Nil</div></div>
+        </div>
+        <button class="btn-apply ba-p" onclick="toast('✓ Application sent to LendingKart!')">Apply Now →</button>
+      </div>
+      <div class="lender">
+        <div class="lender-rank">2</div>
+        <div><div class="lender-name">InCredit Finance</div><div class="lender-badges"><span class="lbadge lb-good">Good Approval Chances</span></div></div>
+        <div class="lender-stats">
+          <div class="ls-item"><div class="ls-lbl">Rate</div><div class="ls-val">2.02%/mo</div></div>
+          <div class="ls-item"><div class="ls-lbl">Fee</div><div class="ls-val">Upto 4%</div></div>
+          <div class="ls-item"><div class="ls-lbl">EMI ₹10L 5yr</div><div class="ls-val">₹22,800</div></div>
+          <div class="ls-item"><div class="ls-lbl">Prepayment</div><div class="ls-val">2% charge</div></div>
+        </div>
+        <button class="btn-apply ba-o" onclick="toast('✓ Application sent to InCredit!')">Apply Now →</button>
+      </div>
+      <div class="lender">
+        <div class="lender-rank">3</div>
+        <div><div class="lender-name">Ambit Capital</div><div class="lender-badges"><span class="lbadge lb-good">Medium Approval Chances</span></div></div>
+        <div class="lender-stats">
+          <div class="ls-item"><div class="ls-lbl">Rate</div><div class="ls-val">3.05%/mo</div></div>
+          <div class="ls-item"><div class="ls-lbl">Fee</div><div class="ls-val">Upto 1.1%</div></div>
+          <div class="ls-item"><div class="ls-lbl">EMI ₹10L 5yr</div><div class="ls-val">₹24,100</div></div>
+          <div class="ls-item"><div class="ls-lbl">Prepayment</div><div class="ls-val">Nil</div></div>
+        </div>
+        <button class="btn-apply ba-o" onclick="toast('✓ Application sent to Ambit!')">Apply Now →</button>
+      </div>
+    </div>
+
+    <div class="bottom-grid">
+      <div class="b-panel">
+        <div class="b-title">What happens next</div>
+        <div class="next-steps">
+          <div class="ns-item"><div class="ns-n">1</div><div><div class="ns-t">Pick your lender</div><div class="ns-s">Compare rates and apply above</div></div></div>
+          <div class="ns-item"><div class="ns-n">2</div><div><div class="ns-t">Submit your application</div><div class="ns-s">Details pre-filled — no re-entry needed</div></div></div>
+          <div class="ns-item"><div class="ns-n">3</div><div><div class="ns-t">Upload documents</div><div class="ns-s">Business proof, bank statements, ID</div></div></div>
+          <div class="ns-item"><div class="ns-n">4</div><div><div class="ns-t">Funds in 2–4 days</div><div class="ns-s">Credited directly to your bank account</div></div></div>
+        </div>
+      </div>
+      <div class="help-panel">
+        <div class="hp-t">Need help choosing?</div>
+        <div class="hp-s">Our loan advisors are available Mon–Sat, 9am–6pm. Free consultation.</div>
+        <button class="btn-help" onclick="toast('📞 Callback requested!')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.18a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.91 13a16 16 0 006 6l.41-.41a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Request Free Callback
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+  <span id="toast-msg"></span>
+</div>
+
+<script>
+/* ════════════════════════════════════
+   STATE
+════════════════════════════════════ */
+var S = { emp: '', biz: '', gst: null, tc: false };
+var timerID = null;
+var PINS = {
+  '400001':'Mumbai, Maharashtra','110001':'New Delhi','560001':'Bengaluru, Karnataka',
+  '600001':'Chennai, Tamil Nadu','700001':'Kolkata, West Bengal','500001':'Hyderabad, Telangana',
+  '122001':'Gurugram, Haryana','302001':'Jaipur, Rajasthan','411001':'Pune, Maharashtra',
+  '380001':'Ahmedabad, Gujarat'
+};
+
+/* ════════════════════════════════════
+   NAVIGATION
+════════════════════════════════════ */
+function show(id) {
+  document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('on'); });
+  var el = document.getElementById(id);
+  if (el) { el.classList.add('on'); window.scrollTo(0, 0); }
+  drawProgress(id);
+  if (id === 's4') startLoad();
+}
+
+/* ════════════════════════════════════
+   PROGRESS BAR
+════════════════════════════════════ */
+var STEPS = ['Personal Info','Business Info','Verify OTP','Your Results'];
+function drawProgress(screenId) {
+  var active = {s1:1,s2:2,s3:3,s4:4,s5:4}[screenId] || 1;
+  ['pb1','pb2','pb3'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.innerHTML = STEPS.map(function(lbl, i) {
+      var n = i + 1;
+      var done = n < active, act = n === active;
+      var circle = done
+        ? '<div class="pb-circle done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>'
+        : '<div class="pb-circle ' + (act ? 'active' : '') + '">' + n + '</div>';
+      return '<div class="pb-step">' +
+        circle +
+        '<div class="pb-info">' +
+          '<div class="pb-step-n ' + (act?'a':'') + '">Step ' + n + '</div>' +
+          '<div class="pb-step-l ' + (act?'a':'') + '">' + lbl + '</div>' +
+        '</div>' +
+        (i < 3 ? '<div class="pb-line ' + (done?'done':'') + '"></div>' : '') +
+      '</div>';
+    }).join('');
+  });
+}
+
+/* ════════════════════════════════════
+   VALIDATION HELPERS
+════════════════════════════════════ */
+function val(id, type) {
+  var el = document.getElementById(id);
+  if (!el) return false;
+  var v = el.value.trim();
+  var ok = false;
+  if (type === 'txt')   ok = v.length >= 2;
+  if (type === 'email') ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  if (type === 'phone') ok = /^[6-9]\d{9}$/.test(v);
+  if (type === 'pan')   ok = /^[A-Z]{5}[0-9]{4}[A-Z]$/.test(v.toUpperCase());
+  if (type === 'sel')   ok = v !== '';
+  if (type === 'dob' && v) {
+    var age = (new Date() - new Date(v)) / (1000*60*60*24*365.25);
+    ok = age >= 18 && age <= 80;
+    var m = document.getElementById('dob-msg');
+    if (m) m.textContent = age < 18 ? 'Must be 18+ years old' : 'Enter a valid date of birth';
+  }
+  el.className = 'fi' + (v.length > 0 ? (ok ? ' ok' : ' err') : '');
+  var fe = document.getElementById('fe-' + id);
+  if (fe) fe.classList.toggle('on', !ok && v.length > 0);
+  return ok;
+}
+
+function required(id, msg) {
+  var fe = document.getElementById('fe-' + id);
+  if (fe) fe.classList.add('on');
+}
+
+/* ════════════════════════════════════
+   STEP 1
+════════════════════════════════════ */
+function selEmp(t) {
+  S.emp = t;
+  document.getElementById('emp-business').classList.toggle('selected', t === 'business');
+  document.getElementById('emp-professional').classList.toggle('selected', t === 'professional');
+  var fe = document.getElementById('fe-emp');
+  if (fe) fe.classList.remove('on');
+}
+
+function doStep1() {
+  var ok = true;
+  if (!val('fName','txt'))  { required('fName'); ok = false; }
+  if (!val('lName','txt'))  { required('lName'); ok = false; }
+  if (!val('dob','dob'))    { required('dob');   ok = false; }
+  if (!val('phone','phone')){ required('phone'); ok = false; }
+  if (!val('email','email')){ required('email'); ok = false; }
+  if (!val('pan','pan'))    { required('pan');   ok = false; }
+  if (!S.emp) { required('emp'); ok = false; }
+  if (!ok) { toast('⚠ Please fix the errors above'); return; }
+
+  /* Pass phone to OTP screen */
+  var ph = document.getElementById('phone').value;
+  var otpEl = document.getElementById('otp-phone');
+  if (otpEl) otpEl.textContent = ph.replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3');
+
+  show('s2');
+}
+
+/* ════════════════════════════════════
+   STEP 2
+════════════════════════════════════ */
+function selConst(t) {
+  S.biz = t;
+  ['prop','part','pvt','pub'].forEach(function(x) {
+    var c = document.getElementById('bc-' + x);
+    var r = document.getElementById('cr-' + x);
+    if (c) c.classList.toggle('selected', x === t);
+    if (r) r.innerHTML = x === t
+      ? '<span style="display:block;width:5px;height:5px;border-radius:50%;background:#fff;margin:auto;margin-top:3px"></span>'
+      : '';
+  });
+  var fe = document.getElementById('fe-const');
+  if (fe) fe.classList.remove('on');
+}
+
+function setGST(v) {
+  S.gst = v;
+  var y = document.getElementById('gst-yes');
+  var n = document.getElementById('gst-no');
+  var w = document.getElementById('gstin-wrap');
+  if (y) y.classList.toggle('selected', v === true);
+  if (n) n.classList.toggle('selected', v === false);
+  if (w) w.style.display = v ? 'block' : 'none';
+}
+
+function togConsent() {
+  S.tc = !S.tc;
+  var b = document.getElementById('tc-box');
+  if (b) b.classList.toggle('on', S.tc);
+  var fe = document.getElementById('fe-tc');
+  if (fe) fe.classList.toggle('on', !S.tc);
+}
+
+/* Pincode live lookup */
+document.getElementById('pincode').addEventListener('input', function() {
+  var c = this.value.replace(/\D/g,'');
+  this.value = c;
+  var found = document.getElementById('pin-found');
+  var fe = document.getElementById('fe-pincode');
+  if (c.length === 6) {
+    var city = PINS[c] || 'India';
+    document.getElementById('pin-city').textContent = city;
+    if (found) found.classList.add('on');
+    this.className = 'fi ok';
+    if (fe) fe.classList.remove('on');
+  } else {
+    if (found) found.classList.remove('on');
+    this.className = 'fi' + (c.length > 0 ? ' err' : '');
+  }
+});
+
+function doStep2() {
+  var ok = true;
+  if (!S.biz) { required('const'); ok = false; }
+  if (!val('pincode','txt'))   { required('pincode');  ok = false; }
+  if (!val('bizAge','sel'))    { required('bizAge');   ok = false; }
+  if (!val('turnover','sel'))  { required('turnover'); ok = false; }
+  if (!S.tc) { required('tc'); ok = false; }
+  if (!ok) { toast('⚠ Please fix the errors above'); return; }
+  show('s3');
+  startTimer();
+}
+
+/* ════════════════════════════════════
+   OTP
+════════════════════════════════════ */
+/* Wire up OTP inputs */
+(function() {
+  for (var i = 0; i < 6; i++) {
+    (function(idx) {
+      var el = document.getElementById('o' + idx);
+      if (!el) return;
+      el.addEventListener('input', function() {
+        this.classList.toggle('filled', this.value !== '');
+        if (this.value && idx < 5) document.getElementById('o' + (idx+1)).focus();
+        var all = true;
+        for (var j = 0; j < 6; j++) {
+          if (!document.getElementById('o'+j).value) { all = false; break; }
+        }
+        if (all) setTimeout(doOTP, 300);
+      });
+      el.addEventListener('keydown', function(e) {
+        if (e.key === 'Backspace' && !this.value && idx > 0) {
+          document.getElementById('o' + (idx-1)).focus();
+        }
+      });
+    })(i);
+  }
+})();
+
+var timerVal = 30;
+function startTimer() {
+  timerVal = 30;
+  clearInterval(timerID);
+  var te = document.getElementById('otp-timer');
+  var re = document.getElementById('otp-resend');
+  if (te) te.textContent = '30';
+  if (re) re.innerHTML = 'Resend in <span id="otp-timer">30</span>s';
+  timerID = setInterval(function() {
+    timerVal--;
+    var t = document.getElementById('otp-timer');
+    if (t) t.textContent = timerVal;
+    if (timerVal <= 0) {
+      clearInterval(timerID);
+      var r = document.getElementById('otp-resend');
+      if (r) r.innerHTML = '<span onclick="resendOTP()" style="color:var(--navy);cursor:pointer;font-weight:700">Resend OTP</span>';
+    }
+  }, 1000);
+}
+
+function resendOTP() {
+  for (var i = 0; i < 6; i++) {
+    var d = document.getElementById('o' + i);
+    if (d) { d.value = ''; d.classList.remove('filled'); }
+  }
+  var fe = document.getElementById('fe-otp');
+  if (fe) fe.classList.remove('on');
+  startTimer();
+  toast('✓ OTP resent');
+}
+
+function doOTP() {
+  var code = '';
+  for (var i = 0; i < 6; i++) {
+    var d = document.getElementById('o' + i);
+    code += d ? d.value : '';
+  }
+  var fe = document.getElementById('fe-otp');
+  var em = document.getElementById('otp-err');
+  if (code.length < 6) {
+    if (fe) fe.classList.add('on');
+    if (em) em.textContent = 'Please enter all 6 digits';
+    return;
+  }
+  if (code === '000000') {
+    if (fe) fe.classList.add('on');
+    if (em) em.textContent = 'Incorrect OTP. Try again.';
+    for (var j = 0; j < 6; j++) {
+      var d2 = document.getElementById('o' + j);
+      if (d2) { d2.value = ''; d2.classList.remove('filled'); }
+    }
+    document.getElementById('o0').focus();
+    return;
+  }
+  if (fe) fe.classList.remove('on');
+  clearInterval(timerID);
+  show('s4');
+}
+
+/* ════════════════════════════════════
+   LOADING
+════════════════════════════════════ */
+function startLoad() {
+  for (var i = 0; i < 4; i++) {
+    var el = document.getElementById('ls' + i);
+    if (el) el.classList.remove('done');
+  }
+  [700, 1800, 3000, 4200].forEach(function(delay, i) {
+    setTimeout(function(idx) {
+      var el = document.getElementById('ls' + idx);
+      if (el) el.classList.add('done');
+    }.bind(null, i), delay);
+  });
+  setTimeout(function() {
+    var fn = document.getElementById('fName');
+    var ln = document.getElementById('lName');
+    var name = ((fn ? fn.value : '') + ' ' + (ln ? ln.value : '')).trim();
+    var rn = document.getElementById('res-name');
+    var ru = document.getElementById('res-username');
+    if (rn && name) rn.textContent = name;
+    if (ru && name) { ru.textContent = name; ru.parentElement.style.display = 'flex'; }
+    show('s5');
+  }, 5400);
+}
+
+/* ════════════════════════════════════
+   TOAST
+════════════════════════════════════ */
+function toast(msg) {
+  var t = document.getElementById('toast');
+  var m = document.getElementById('toast-msg');
+  if (!t || !m) return;
+  m.textContent = msg;
+  t.classList.add('on');
+  setTimeout(function() { t.classList.remove('on'); }, 2800);
+}
+
+/* ════════════════════════════════════
+   DOB MAX
+════════════════════════════════════ */
+(function() {
+  var d = document.getElementById('dob');
+  if (d) {
+    var t = new Date();
+    t.setFullYear(t.getFullYear() - 18);
+    d.max = t.toISOString().split('T')[0];
+  }
+})();
+</script>
+</body>
+</html>
